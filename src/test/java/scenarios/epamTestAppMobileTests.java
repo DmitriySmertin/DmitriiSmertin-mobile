@@ -1,26 +1,21 @@
 package scenarios;
 
 import org.testng.annotations.Test;
-import pageObjects.EpamTestAppPO.HomePageObject;
+
 import pageObjects.PageObject;
 import setup.BaseTest;
 
+import static pageObjects.NativePageObject.fillAuthorizationFields;
+import static pageObjects.NativePageObject.fillRegistrationFields;
+import static setup.PropertyReader.*;
+
 public class epamTestAppMobileTests extends BaseTest {
-    @Test(groups = {"EpamTestApp"}, description = "Test registration and authorization")
-    public void registrationAndAuthorizationTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException, InterruptedException {
-        getPo().getWelement("regBtn").click();
-        getPo().getWelement("regEmailField").sendKeys("mitya@mail.ru");
-        getPo().getWelement("regUserNameField").sendKeys("mitya");
-        getPo().getWelement("regPassField").sendKeys("Qwerty12345");
-        getPo().getWelement("regPassConfirmField").sendKeys("Qwerty12345");
-        getPo().getWelement("checkBoxAgreements").click();
-        getPo().getWelement("regNewAccount").click();
-        Thread.sleep(5000);
-        getPo().getWelement("loginEmailField").sendKeys("mitya@mail.ru");
-        getPo().getWelement("loginPassField").sendKeys("Qwerty12345");
-        assert getPo().getWelement("mainForm").isDisplayed();
-
-
+    @Test(groups = {"EpamTestApp"}, description = "Positive test registration and authorization")
+    public void positiveRegistrationAndAuthorizationTest() throws IllegalAccessException, NoSuchFieldException
+    {
+        PageObject epamAppPo = (PageObject) getPo();
+        fillRegistrationFields(epamAppPo,getEmail(),getName(),getPass());
+        fillAuthorizationFields(epamAppPo,getEmail(),getPass());
+        assert  epamAppPo.getWelement("mainForm").isDisplayed();
     }
-
 }

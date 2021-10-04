@@ -13,9 +13,6 @@ public class NativePageObject extends PageObject {
     }
 
     protected final String APP_PACK_NAME = "platkovsky.alexey.epamtestapp";
-    String email = "mitya@mail.ru";
-    String name = "mitya";
-    String pass = "12345678";
 
     @AndroidFindBy(id = APP_PACK_NAME + ":id/email_sign_in_button")
     WebElement signInBtn;
@@ -33,18 +30,14 @@ public class NativePageObject extends PageObject {
     WebElement checkBoxAgreements;
     @AndroidFindBy(id = APP_PACK_NAME + ":id/register_new_account_button")
     WebElement regNewAccount;
-    @AndroidFindBy(id= APP_PACK_NAME + ":id/login_email")
+    @AndroidFindBy(id = APP_PACK_NAME + ":id/login_email")
     WebElement loginEmailField;
-    @AndroidFindBy(id= APP_PACK_NAME + ":id/login_pwd")
+    @AndroidFindBy(id = APP_PACK_NAME + ":id/login_pwd")
     WebElement loginPassField;
-    @AndroidFindBy(id= APP_PACK_NAME + ":id/main_content")
+    @AndroidFindBy(id = APP_PACK_NAME + ":id/main_content")
     WebElement mainForm;
 
-
-
-
-    public static void fillRegistrationFields(PageObject po, String email, String userName, String pass) throws NoSuchFieldException, IllegalAccessException
-    {
+    public static void fillRegistrationFields(PageObject po, String email, String userName, String pass) throws NoSuchFieldException, IllegalAccessException {
         po.getWelement("regBtn").click();
         po.getWelement("regEmailField").sendKeys(email);
         po.getWelement("regUserNameField").sendKeys(userName);
@@ -53,10 +46,10 @@ public class NativePageObject extends PageObject {
         po.getWelement("checkBoxAgreements").click();
         po.getWelement("regNewAccount").click();
     }
-    public static void fillAuthorizationFields(PageObject po,String email,String pass) throws NoSuchFieldException, IllegalAccessException {
+
+    public static void fillAuthorizationFields(PageObject po, String email, String pass) throws NoSuchFieldException, IllegalAccessException {
         po.getWelement("loginEmailField").sendKeys(email);
         po.getWelement("loginPassField").sendKeys(pass);
         po.getWelement("signInBtn").click();
     }
-
 }

@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.PageObject;
+import pageObjects.WebPageObject;
 import setup.BaseTest;
 
 import java.util.List;
@@ -19,10 +20,13 @@ public class searchKeywordWebMobileTest extends BaseTest {
     public void searchEpamTest(String url, String keyWord) throws NoSuchFieldException, IllegalAccessException {
 
         getDriver().get(url);
+
         new WebDriverWait(getDriver(), 20).until(
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
-        PageObject webApp = (PageObject) getPo();
+
+        WebPageObject webApp = new WebPageObject(getDriver());
+
         webApp.getWelement("searchBar").click();
         webApp.getWelement("searchBar").sendKeys(keyWord);
         webApp.getWelement("searchBar").sendKeys(Keys.ENTER);

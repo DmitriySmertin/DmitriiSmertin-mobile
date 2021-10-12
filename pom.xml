@@ -74,14 +74,5 @@
                 <suite.file>./src/test/resources/testNG/webTNG.xml</suite.file>
             </properties>
         </profile>
-        <profile>
-            <id>epamApp</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>src/test/resources/testNG/EPAMTestAppTNG.xml</suite.file>
-            </properties>
-        </profile>
     </profiles>
 </project>

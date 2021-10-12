@@ -7,17 +7,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageObjects.PageObject;
 import pageObjects.WebPageObject;
 import setup.BaseTest;
 
 import java.util.List;
 
-public class searchKeywordWebMobileTest extends BaseTest {
+public class WebMobileAndroidTest extends BaseTest {
 
-    @Test(groups = {"web"}, description = "Check that emulator find key word"
+    @Test(groups = {"web"}, description = "Check that emulator find keyword in Android device"
             , dataProviderClass = DataProvider.class, dataProvider = "webData")
-    public void searchEpamTest(String url, String keyWord) throws NoSuchFieldException, IllegalAccessException {
+    public void searchKeywordEpamTestAndroid(String url, String keyword) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
 
         getDriver().get(url);
 
@@ -26,18 +25,16 @@ public class searchKeywordWebMobileTest extends BaseTest {
         );
 
         WebPageObject webApp = new WebPageObject(getDriver());
-
-        webApp.getWelement("searchBar").click();
-        webApp.getWelement("searchBar").sendKeys(keyWord);
-        webApp.getWelement("searchBar").sendKeys(Keys.ENTER);
+        getPo().getWebElement("searchBar").click();
+        getPo().getWebElement("searchBar").sendKeys(keyword);
+        getPo().getWebElement("searchBar").sendKeys(Keys.ENTER);
 
         List<WebElement> listResult = webApp.getSearchList();
         Assert.assertFalse(listResult.isEmpty());
 
         for (int i = 0; i < listResult.size(); i++) {
-            Assert.assertTrue(webApp.checkIfSearchResultContainsText(keyWord),
+            Assert.assertTrue(webApp.checkIfSearchResultContainsText(keyword),
                     "Search not correct");
         }
-
     }
 }

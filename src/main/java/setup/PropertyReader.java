@@ -40,5 +40,12 @@ public class PropertyReader {
         return getValue("TestPass");
     }
 
+    public static String getPageTitleAndroid() {
+        return getValue("PageTitleAndroid");
+    }
+
+    public static String getPageTitleIOs() {
+        return getValue("PageTitleIOs");
+    }
 
 }

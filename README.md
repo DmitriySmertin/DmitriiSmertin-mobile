@@ -1,0 +1,1 @@
+If you want to use the cloud solution, in the pom file, add your personal epamMobile token

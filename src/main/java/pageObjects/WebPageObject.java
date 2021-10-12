@@ -7,15 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class WebPageObject extends PageObject {
+public class WebPageObject {
 
-    public WebPageObject(AppiumDriver appiumDriver) {
+    public WebPageObject(AppiumDriver<? extends WebElement> appiumDriver) {
         PageFactory.initElements(appiumDriver, this);
-
     }
 
     @FindBy(css = "input[title='Поиск']")
     WebElement searchBar;
+
     @FindBy(css = "div[id='rso'] div[role='heading'][aria-level='3']")
     private List<WebElement> searchResults;
 

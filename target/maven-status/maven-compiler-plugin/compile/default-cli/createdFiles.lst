@@ -1,0 +1,8 @@
+setup\IPageObject.class
+pageObjects\NativePageObject.class
+setup\IDriver.class
+pageObjects\WebPageObject.class
+setup\BaseTest.class
+DataProviders\DataProvider.class
+pageObjects\PageObject.class
+setup\PropertyReader.class
